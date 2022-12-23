@@ -13,17 +13,18 @@ body{
         display: flex;
         justify-content: center;
 
-        height: 50vw;
+        height: 40vw;
         width: auto;
         background-image: url(./assets/background2.png);
         background-repeat: no-repeat;
         background-size: cover;
 
+
         #search{
         margin-top: 30vw;
         height: 5vw;
         width: 50vw;
-        border-radius: 15px;
+        border-radius: 5vw;
         border: none;
         text-align: center;
         box-shadow: 12px 14px 21px -14px rgba(0,0,0,0.75);
@@ -56,6 +57,11 @@ body{
             width: auto;
             text-align: center;
         }
+    }
+    .ville{
+        text-align: center;
+        margin-bottom: 5%;
+        font-family: 'Chivo Mono', monospace;
     }
     .carte{
         width: 95%;
@@ -113,61 +119,67 @@ body{
         }
     } 
 
-@media screen and (min-width: 768px) {
-    
-    .carte{
-        p{
-            font-size: 1.5vw;
-        }
-        width: 95%;
-        padding: 2%;
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        .class_all{
-            width: 20%;
-            height: fit-content;
-            margin: 2%;
-            padding: 3%;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            
-
-            .carte__head{
-                .carte__head__deg{
-                    font-size: 3.5vw;
-                }
-                .carte__head__hour{
-                    font-size: 1.5vw;
-                }
+    @media screen and (min-width: 768px) {
+        .div_button{
+            button{
+                padding: 2%;
+                border-radius: 5vw;
+                width: 10vw;
             }
-            .carte__info__cloud{
+        }
+        .carte{
+            p{
+                font-size: 1.5vw;
+            }
+            width: 95%;
+            padding: 2%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            .class_all{
+                width: 20%;
+                height: fit-content;
+                margin: 2%;
+                padding: 3%;
+
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                .cloud{
-                    width: 12vw;
+                justify-content: space-around;
+            
+
+                .carte__head{
+                    .carte__head__deg{
+                        font-size: 3.5vw;
+                    }
+                    .carte__head__hour{
+                        font-size: 1.5vw;
+                    }
                 }
+                .carte__info__cloud{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .cloud{
+                        width: 12vw;
+                    }
+                }
+                .info__wind__pressure{
+                    .carte__info__pressure{
+                        display: flex;
+                        justify-content: center;
+                        .pressure{
+                            width: 2.5vw;
+                        }
+                    }
+                    .carte__info__wind{
+                        display: flex;
+                        justify-content: center;
+                        .wind{
+                            width: 2.5vw;
+                        }
+                    } 
+                }    
             }
-            .info__wind__pressure{
-                .carte__info__pressure{
-                    display: flex;
-                    justify-content: center;
-                    .pressure{
-                        width: 2.5vw;
-                    }
-                }
-                .carte__info__wind{
-                    display: flex;
-                    justify-content: center;
-                    .wind{
-                        width: 2.5vw;
-                    }
-                }     
-            }    
         }
     }
-}
 }

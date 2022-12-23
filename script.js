@@ -20,7 +20,6 @@ button.addEventListener('click', () =>{
             //display the town
             
             let ville=document.getElementsByClassName('ville')[0];
-            console.log(town);
             ville.textContent= town;
 
 

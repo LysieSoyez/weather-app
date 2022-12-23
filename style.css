@@ -13,7 +13,7 @@ body p {
 body .recherche {
   display: flex;
   justify-content: center;
-  height: 50vw;
+  height: 40vw;
   width: auto;
   background-image: url(./assets/background2.png);
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@ body .recherche #search {
   margin-top: 30vw;
   height: 5vw;
   width: 50vw;
-  border-radius: 15px;
+  border-radius: 5vw;
   border: none;
   text-align: center;
   box-shadow: 12px 14px 21px -14px rgba(0, 0, 0, 0.75);
@@ -54,6 +54,11 @@ body .div_button button {
   color: white;
   width: auto;
   text-align: center;
+}
+body .ville {
+  text-align: center;
+  margin-bottom: 5%;
+  font-family: "Chivo Mono", monospace;
 }
 body .carte {
   width: 95%;
@@ -108,6 +113,11 @@ body .carte .class_all .info__wind__pressure .carte__info__wind .wind {
   width: 5vw;
 }
 @media screen and (min-width: 768px) {
+  body .div_button button {
+    padding: 2%;
+    border-radius: 5vw;
+    width: 10vw;
+  }
   body .carte {
     width: 95%;
     padding: 2%;
