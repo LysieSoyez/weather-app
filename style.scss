@@ -2,35 +2,72 @@
     margin: 0;
     padding: 0;
 }
+html{
+    background-color: #D9FAFF;
+}
 body{
-    background-image: url(./assets/planete.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    p{
+        font-size: 5vw;
+    }
     .recherche{
         display: flex;
         justify-content: center;
+
+        height: 50vw;
+        width: auto;
+        background-image: url(./assets/background2.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+
         #search{
-        margin: 2%;
+        margin-top: 30vw;
+        height: 5vw;
+        width: 50vw;
+        border-radius: 15px;
+        border: none;
+        text-align: center;
+        box-shadow: 12px 14px 21px -14px rgba(0,0,0,0.75);
+        font-size: 3vw;
         }
         button{
+            font-size: 5vw;
             width: 15vw;
+            height: 5vw;
+            margin-top: 30vw;
+            border-radius: 15px;
+            border: none;
+            background-color: #00204A;
+            
+            #loupe{
+                width: 3vw;
+            }
         }
     }
     .div_button{
         display: flex;
         justify-content: space-around;
         margin-bottom: 2%;
+        button{
+            background-color: #00204A;
+            border: none;
+            padding: 2%;
+            border-radius: 15px;
+            color: white;
+            width: auto;
+            text-align: center;
+        }
     }
     .carte{
-        width: 100%;
+        width: 95%;
+        padding: 2%;
         .class_all{
             width: 85%;
+            height: 35vw;
             margin: auto;
             margin-bottom: 2%;
             border-radius: 28px;
-            background: hsla(138, 82%, 69%, 1);
-            background: linear-gradient(90deg, hsla(138, 82%, 69%, 0789) 0%, hsla(186, 100%, 50%, 0.5123456789) 100%);
-            box-shadow: 0px 0px 20px -2px rgba(0,0,0,0.75);
+            background-color: rgba(120, 126, 126, 0.219);
+            padding: 2%;
 
             display: flex;
             justify-content: space-around;
@@ -38,39 +75,99 @@ body{
 
             .carte__head{
                 text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
                 .carte__head__deg{
-                    font-size: 2rem;
+                    font-size: 10vw;
                 }
                 .carte__head__hour{
-                    font-size: 1rem;
+                    font-size: 5vw;
                 }
             }
-            .carte__info__all{
-                .carte__info__cloud{
-                    .info__cloud{
-                        text-align: center;
-                    }
-                    .cloud{
-                        text-align: center;
-                    }
+            .carte__info__cloud{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                .info__cloud{
+                    text-align: center;
                 }
+            }
+            .info__wind__pressure{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
                 .carte__info__pressure{
-                    .info__pressure{
-                        text-align: center;
-                    }
+                    display: flex;
                     .pressure{
-                        text-align: center;
+                        width: 5vw;
                     }
                 }
                 .carte__info__wind{
-                    .info__wind{
-                        text-align: center;
-                    }
+                    display: flex;
                     .wind{
-                        text-align: center;
+                        width: 5vw;
                     }
-                }
-            }
+                }     
+            }    
         }
     } 
+
+@media screen and (min-width: 768px) {
+    
+    .carte{
+        p{
+            font-size: 1.5vw;
+        }
+        width: 95%;
+        padding: 2%;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        .class_all{
+            width: 20%;
+            height: fit-content;
+            margin: 2%;
+            padding: 3%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            
+
+            .carte__head{
+                .carte__head__deg{
+                    font-size: 3.5vw;
+                }
+                .carte__head__hour{
+                    font-size: 1.5vw;
+                }
+            }
+            .carte__info__cloud{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .cloud{
+                    width: 12vw;
+                }
+            }
+            .info__wind__pressure{
+                .carte__info__pressure{
+                    display: flex;
+                    justify-content: center;
+                    .pressure{
+                        width: 2.5vw;
+                    }
+                }
+                .carte__info__wind{
+                    display: flex;
+                    justify-content: center;
+                    .wind{
+                        width: 2.5vw;
+                    }
+                }     
+            }    
+        }
+    }
+}
 }

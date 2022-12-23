@@ -8,6 +8,7 @@ button.addEventListener('click', () =>{
     div_carte.innerHTML=""
     div_button.innerHTML=""
     let town= input.value
+    
     let fetchApi= (town) => fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + town + "&cnt=40&units=metric&appid=359a6fa52c3e3c33862c31d9f9e5fc5f");
     
         fetchApi(town)
@@ -15,6 +16,14 @@ button.addEventListener('click', () =>{
         .then((json)=>{
             localStorage.setItem("data",JSON.stringify(json))
             console.log(json)
+
+            //display the town
+            
+            let ville=document.getElementsByClassName('ville')[0];
+            console.log(town);
+            ville.textContent= town;
+
+
             let list= json.list
             for(let elem of list){
 
@@ -47,17 +56,10 @@ button.addEventListener('click', () =>{
 
 
 
-                //create a div for the infos
-                let div_info=document.createElement('div');
-                div_info.classList.add("carte__info__all");
-                div_class.appendChild(div_info);
-
-
-
                 //create a div for the CLOUD info
                 let div_cloud=document.createElement('div');
                 div_cloud.classList.add("carte__info__cloud");
-                div_info.appendChild(div_cloud);
+                div_class.appendChild(div_cloud);
 
                 //create a p for the cloud
                 let info_cloud=document.createElement('p');
@@ -73,30 +75,21 @@ button.addEventListener('click', () =>{
                 div_cloud.appendChild(cloud);
 
 
-
-                // //create a div for the HUMIDITY info
-                // let div_humidity=document.createElement('div');
-                // div_humidity.classList.add("carte__info__humidity");
-                // div_info.appendChild(div_humidity);
-
-                // //create a p for the humidity
-                // let info_humidity=document.createElement('p');
-                // info_humidity.classList.add("info__humidity");
-                // info_humidity.textContent=elem.main.humidity;
-                // div_humidity.appendChild(info_humidity);
-
-                // //create a img for the humidity image
-                // let humidity=document.createElement('img');
-                // humidity.classList.add("humidity");
-                // humidity.setAttribute("src","")
-                // info_humidity.appendChild(humidity);
-
-
+                //create a div for the wind and the pressure
+                let div_wind_pressure=document.createElement('div');
+                div_wind_pressure.classList.add("info__wind__pressure");
+                div_class.appendChild(div_wind_pressure);
 
                 //create a div for the PRESSURE info
                 let div_pressure=document.createElement('div');
                 div_pressure.classList.add("carte__info__pressure");
-                div_info.appendChild(div_pressure);
+                div_wind_pressure.appendChild(div_pressure);
+
+                //create a img for the pressure image
+                let pressure=document.createElement('img');
+                pressure.classList.add("pressure");
+                pressure.setAttribute("src","./assets/pression.png")
+                div_pressure.appendChild(pressure);
 
                 //create a p for the pressure
                 let info_pressure=document.createElement('p');
@@ -104,18 +97,19 @@ button.addEventListener('click', () =>{
                 info_pressure.textContent=elem.main.pressure + "hPa";
                 div_pressure.appendChild(info_pressure);
 
-                //create a img for the pressure image
-                let pressure=document.createElement('img');
-                pressure.classList.add("pressure");
-                pressure.setAttribute("src","")
-                info_pressure.appendChild(pressure);
 
 
 
                 //create a div for the WIND info
                 let div_wind=document.createElement('div');
                 div_wind.classList.add("carte__info__wind");
-                div_info.appendChild(div_wind);
+                div_wind_pressure.appendChild(div_wind);
+
+                //create a img for the wind image
+                let wind=document.createElement('img');
+                wind.classList.add("wind");
+                wind.setAttribute("src","./assets/wind.png");
+                div_wind.appendChild(wind);
 
                 //create a p for the wind
                 let info_wind=document.createElement('p');
@@ -123,11 +117,6 @@ button.addEventListener('click', () =>{
                 info_wind.textContent=(((elem.wind.speed)*3.6).toFixed(0) + " km/h");
                 div_wind.appendChild(info_wind);
 
-                //create a img for the wind image
-                let wind=document.createElement('img');
-                wind.classList.add("wind");
-                wind.setAttribute("src","");
-                info_wind.appendChild(wind);
             }
             
             const date= new Date();
@@ -146,7 +135,7 @@ button.addEventListener('click', () =>{
                 for(let elem of div_carte.children){
                     elem.style.display="none"
                     if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()))){
-                        elem.style.display="block"
+                        elem.style.display="flex"
                     }
                 }
             })
@@ -165,7 +154,7 @@ button.addEventListener('click', () =>{
                 for(let elem of div_carte.children){
                     elem.style.display="none"
                     if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+1))){
-                        elem.style.display="block"
+                        elem.style.display="flex"
                     }
                 }
             })
@@ -184,7 +173,7 @@ button.addEventListener('click', () =>{
                 for(let elem of div_carte.children){
                     elem.style.display="none"
                     if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+2))){
-                        elem.style.display="block"
+                        elem.style.display="flex"
                     }
                 }
             })
@@ -203,7 +192,7 @@ button.addEventListener('click', () =>{
                 for(let elem of div_carte.children){
                     elem.style.display="none"
                     if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+3))){
-                        elem.style.display="block"
+                        elem.style.display="flex"
                     }
                 }
             })
@@ -222,7 +211,7 @@ button.addEventListener('click', () =>{
                 for(let elem of div_carte.children){
                     elem.style.display="none"
                     if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+4))){
-                        elem.style.display="block"
+                        elem.style.display="flex"
                     }
                 }
             })
