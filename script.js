@@ -4,6 +4,26 @@ const button= document.querySelector('button');
 let div_carte=document.getElementsByClassName('carte')[0];
 let div_button=document.getElementsByClassName("div_button")[0];
 
+//date du jour
+let date = new Date().toLocaleDateString('en-CA');
+
+//date du lendemain
+let tomorrowDate= new Date(Date.now() + 1000 * 3600 * 24).toLocaleDateString('en-CA');
+console.log(tomorrowDate);
+
+//date 2jours après
+let day_2= new Date(Date.now() + 1000 * 3600 * 48).toLocaleDateString('en-CA');
+console.log(day_2);
+
+//date 3jours après
+let day_3= new Date(Date.now() + 1000 * 3600 * 72).toLocaleDateString('en-CA');
+console.log(day_3);
+
+//date 4jours après
+let day_4= new Date(Date.now() + 1000 * 3600 * 96).toLocaleDateString('en-CA');
+console.log(day_4);
+
+
 button.addEventListener('click', () =>{
     div_carte.innerHTML=""
     div_button.innerHTML=""
@@ -25,11 +45,13 @@ button.addEventListener('click', () =>{
 
             let list= json.list
             for(let elem of list){
+                
+                let splitDate=elem.dt_txt.split(" ")[0];
 
                 //create a div for all of the cart
                 let div_class=document.createElement('div');
                 div_class.classList.add(
-                    elem.dt_txt.split(" ")[0],
+                    splitDate,
                     "class_all")
                 div_carte.appendChild(div_class);
 
@@ -116,103 +138,38 @@ button.addEventListener('click', () =>{
                 info_wind.textContent=(((elem.wind.speed)*3.6).toFixed(0) + " km/h");
                 div_wind.appendChild(info_wind);
 
+                
             }
             
-            const date= new Date();
+            //create a button that will short every carte by date
+            function createButton(bName, bDate) {
 
-            //create a button for the 1st day
-            let button_day1=document.createElement("button");
-            button_day1.classList.add(
-                date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()),
-                "button_1");
-            button_day1.textContent="Today";
-            div_button.appendChild(button_day1);
-            button_day1.style.display="block"
+                //create a button for the 1st day
+                let button_day = document.createElement("button");
+                button_day.classList.add(
+                    bDate,
+                    "button_1");
+                button_day.textContent = bName;
+                div_button.appendChild(button_day);
+                button_day.style.display = "block"
 
-            //create a event to display the right day
-            button_day1.addEventListener("click",()=>{
-                for(let elem of div_carte.children){
-                    elem.style.display="none"
-                    if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()))){
-                        elem.style.display="flex"
+                //create a event to display the right day
+                button_day.addEventListener("click", () => {
+                    for (let elem of div_carte.children) {
+                        elem.style.display = "none"
+                        if (elem.classList.contains(bDate)) {
+                            elem.style.display = "flex"
+                        }
                     }
-                }
-            })
+                })
+            }
 
-            //create a button for the 2nd day
-            let button_day2=document.createElement("button");
-            button_day2.classList.add(
-                date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+1),
-                "button_2");
-            button_day2.textContent="Tomorrow";
-            div_button.appendChild(button_day2);
-            button_day2.style.display="block"
+            console.log(list[0].dt_txt.split(" ")[0])
+            createButton("today",date);
+            createButton("tomorrow",tomorrowDate);
+            createButton(day_2.substring(5),day_2);
+            createButton(day_3.substring(5),day_3);
+            createButton(day_4.substring(5),day_4);
 
-            //create a event to display the right day
-            button_day2.addEventListener("click",()=>{
-                for(let elem of div_carte.children){
-                    elem.style.display="none"
-                    if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+1))){
-                        elem.style.display="flex"
-                    }
-                }
-            })
-
-            //create a button for the 3rd day
-            let button_day3=document.createElement("button");
-            button_day3.classList.add(
-                date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+2),
-                "button_3");
-            button_day3.textContent=(date.getDate()+2)+"-"+(date.getMonth()+1);
-            div_button.appendChild(button_day3);
-            button_day3.style.display="block"
-
-            //create a event to display the right day
-            button_day3.addEventListener("click",()=>{
-                for(let elem of div_carte.children){
-                    elem.style.display="none"
-                    if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+2))){
-                        elem.style.display="flex"
-                    }
-                }
-            })
-
-            //create a button for the 4th day
-            let button_day4=document.createElement("button");
-            button_day4.classList.add(
-                date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+3),
-                "button_4");
-            button_day4.textContent=(date.getDate()+3)+"-"+(date.getMonth()+1);
-            div_button.appendChild(button_day4);
-            button_day4.style.display="block"
-
-            //create a event to display the right day
-            button_day4.addEventListener("click",()=>{
-                for(let elem of div_carte.children){
-                    elem.style.display="none"
-                    if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+3))){
-                        elem.style.display="flex"
-                    }
-                }
-            })
-
-            //create a button for the 5th day
-            let button_day5=document.createElement("button");
-            button_day5.classList.add(
-                date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+4),
-                "button_5");
-            button_day5.textContent=(date.getDate()+4)+"-"+(date.getMonth()+1);
-            div_button.appendChild(button_day5);
-            button_day5.style.display="block"
-
-            //create a event to display the right day
-            button_day5.addEventListener("click",()=>{
-                for(let elem of div_carte.children){
-                    elem.style.display="none"
-                    if(elem.classList.contains(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate()+4))){
-                        elem.style.display="flex"
-                    }
-                }
-            })
         })
 })
