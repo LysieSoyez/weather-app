@@ -9,19 +9,15 @@ let date = new Date().toLocaleDateString('en-CA');
 
 //date du lendemain
 let tomorrowDate= new Date(Date.now() + 1000 * 3600 * 24).toLocaleDateString('en-CA');
-console.log(tomorrowDate);
 
 //date 2jours après
 let day_2= new Date(Date.now() + 1000 * 3600 * 48).toLocaleDateString('en-CA');
-console.log(day_2);
 
 //date 3jours après
 let day_3= new Date(Date.now() + 1000 * 3600 * 72).toLocaleDateString('en-CA');
-console.log(day_3);
 
 //date 4jours après
 let day_4= new Date(Date.now() + 1000 * 3600 * 96).toLocaleDateString('en-CA');
-console.log(day_4);
 
 
 button.addEventListener('click', () =>{
