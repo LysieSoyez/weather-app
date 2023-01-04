@@ -1,21 +1,11 @@
+import { createP } from "./module/Paragraphe.mjs";
+import { createImg } from "./module/Images.mjs";
+import { createButton } from "./module/Button.mjs";
 
 const input=document.querySelector('input');
 const button= document.querySelector('button');
 let div_carte=document.getElementsByClassName('carte')[0];
 let div_button=document.getElementsByClassName("div_button")[0];
-
-function createP(clname, text, parent) {
-    let para = document.createElement('p');
-    para.classList.add(clname);
-    para.textContent = text;
-    parent.appendChild(para);
-}
-function createImg(clname, image, parent) {
-    let img = document.createElement('img');
-    img.classList.add(clname);
-    img.setAttribute("src", image);
-    parent.appendChild(img)
-}
 
 //date du jour
 let date = new Date().toLocaleDateString('en-CA');
@@ -119,35 +109,12 @@ button.addEventListener('click', () =>{
                 createP("info__wind",(((elem.wind.speed)*3.6).toFixed(0)+" km/h"),div_wind)
             }
             
-            //create a button that will short every carte by date
-            function createButton(bName, bDate) {
-
-                //create a button for the 1st day
-                let button_day = document.createElement("button");
-                button_day.classList.add(
-                    bDate,
-                    "button_1");
-                button_day.textContent = bName;
-                div_button.appendChild(button_day);
-                button_day.style.display = "block"
-
-                //create a event to display the right day
-                button_day.addEventListener("click", () => {
-                    for (let elem of div_carte.children) {
-                        elem.style.display = "none"
-                        if (elem.classList.contains(bDate)) {
-                            elem.style.display = "flex"
-                        }
-                    }
-                })
-            }
-
             console.log(list[0].dt_txt.split(" ")[0])
-            createButton("today",date);
-            createButton("tomorrow",tomorrowDate);
-            createButton(day_2.substring(5),day_2);
-            createButton(day_3.substring(5),day_3);
-            createButton(day_4.substring(5),day_4);
+            createButton("today",date, div_button, div_carte);
+            createButton("tomorrow",tomorrowDate, div_button, div_carte);
+            createButton(day_2.substring(5),day_2, div_button, div_carte);
+            createButton(day_3.substring(5),day_3, div_button, div_carte);
+            createButton(day_4.substring(5),day_4, div_button, div_carte);
 
         })
 })
