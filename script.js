@@ -4,6 +4,19 @@ const button= document.querySelector('button');
 let div_carte=document.getElementsByClassName('carte')[0];
 let div_button=document.getElementsByClassName("div_button")[0];
 
+function createP(clname, text, parent) {
+    let para = document.createElement('p');
+    para.classList.add(clname);
+    para.textContent = text;
+    parent.appendChild(para);
+}
+function createImg(clname, image, parent) {
+    let img = document.createElement('img');
+    img.classList.add(clname);
+    img.setAttribute("src", image);
+    parent.appendChild(img)
+}
+
 //date du jour
 let date = new Date().toLocaleDateString('en-CA');
 
@@ -57,39 +70,60 @@ button.addEventListener('click', () =>{
                 div_class.appendChild(div_head);
 
 
+                // //create a p for the hours
+                // let head_hour=document.createElement('p');
+                // head_hour.classList.add("carte__head__hour");
+                // let hourS= elem.dt_txt.split(" ")[1];
+                // head_hour.textContent=hourS.split(":")[0] + "h00";
+                // div_head.appendChild(head_hour);
                 //create a p for the hours
-                let head_hour=document.createElement('p');
-                head_hour.classList.add("carte__head__hour");
-                let hourS= elem.dt_txt.split(" ")[1];
-                head_hour.textContent=hourS.split(":")[0] + "h00";
-                div_head.appendChild(head_hour);
+                let hourS=elem.dt_txt.split(" ")[1];
+                createP("carte__head__hour",hourS.split(":")[0] + "h00",div_head);
 
 
                 //create a p for the degrees
-                let head_deg=document.createElement('p');
-                head_deg.classList.add("carte__head__deg");
-                head_deg.textContent=((elem.main.temp).toFixed(0) + "°");
-                div_head.appendChild(head_deg);
-
-
+                createP("carte__head__deg",((elem.main.temp).toFixed(0) + "°"),div_head)
+                // //create a p for the degrees
+                // let head_deg=document.createElement('p');
+                // head_deg.classList.add("carte__head__deg");
+                // head_deg.textContent=((elem.main.temp).toFixed(0) + "°");
+                // div_head.appendChild(head_deg);
 
                 //create a div for the CLOUD info
                 let div_cloud=document.createElement('div');
                 div_cloud.classList.add("carte__info__cloud");
                 div_class.appendChild(div_cloud);
 
-                //create a p for the cloud
-                let info_cloud=document.createElement('p');
-                info_cloud.classList.add("info__cloud");
-                info_cloud.textContent=elem.weather[0].description;
-                div_cloud.appendChild(info_cloud);
 
+
+                // function createDiv(clname,child){
+                //     let name=document.createElement('div');
+                //     name.classList.add(clname);
+                //     child.appendChild(name);
+                // }
+                // createDiv("carte__info__cloud",div_class);
+
+                
+                //create a p for the cloud info
+                createP("info__cloud",elem.weather[0].description,div_cloud)
 
                 //create a img for the cloud image
-                let cloud=document.createElement('img');
-                cloud.classList.add("cloud");
-                cloud.setAttribute("src","http://openweathermap.org/img/wn/"+elem.weather[0].icon+"@2x.png");
-                div_cloud.appendChild(cloud);
+                createImg("cloud","http://openweathermap.org/img/wn/"+elem.weather[0].icon+"@2x.png",div_cloud)
+
+
+                
+                // //create a p for the cloud
+                // let info_cloud=document.createElement('p');
+                // info_cloud.classList.add("info__cloud");
+                // info_cloud.textContent=elem.weather[0].description;
+                // carte__info__cloud.appendChild(info_cloud);
+
+
+                // //create a img for the cloud image
+                // let cloud=document.createElement('img');
+                // cloud.classList.add("cloud");
+                // cloud.setAttribute("src","http://openweathermap.org/img/wn/"+elem.weather[0].icon+"@2x.png");
+                // div_cloud.appendChild(cloud);
 
 
                 //create a div for the wind and the pressure
@@ -97,22 +131,29 @@ button.addEventListener('click', () =>{
                 div_wind_pressure.classList.add("info__wind__pressure");
                 div_class.appendChild(div_wind_pressure);
 
+
                 //create a div for the PRESSURE info
                 let div_pressure=document.createElement('div');
                 div_pressure.classList.add("carte__info__pressure");
                 div_wind_pressure.appendChild(div_pressure);
 
                 //create a img for the pressure image
-                let pressure=document.createElement('img');
-                pressure.classList.add("pressure");
-                pressure.setAttribute("src","./assets/pression.png")
-                div_pressure.appendChild(pressure);
+                createImg("pressure","./assets/pression.png",div_pressure);
 
                 //create a p for the pressure
-                let info_pressure=document.createElement('p');
-                info_pressure.classList.add("info__pressure");
-                info_pressure.textContent=elem.main.pressure + "hPa";
-                div_pressure.appendChild(info_pressure);
+                createP("info__pressure",elem.main.pressure+"hPa",div_pressure);
+
+                // //create a img for the pressure image
+                // let pressure=document.createElement('img');
+                // pressure.classList.add("pressure");
+                // pressure.setAttribute("src","./assets/pression.png")
+                // div_pressure.appendChild(pressure);
+
+                // //create a p for the pressure
+                // let info_pressure=document.createElement('p');
+                // info_pressure.classList.add("info__pressure");
+                // info_pressure.textContent=elem.main.pressure + "hPa";
+                // div_pressure.appendChild(info_pressure);
 
 
 
@@ -123,16 +164,22 @@ button.addEventListener('click', () =>{
                 div_wind_pressure.appendChild(div_wind);
 
                 //create a img for the wind image
-                let wind=document.createElement('img');
-                wind.classList.add("wind");
-                wind.setAttribute("src","./assets/wind.png");
-                div_wind.appendChild(wind);
+                createImg("wind","./assets/wind.png",div_wind);
 
                 //create a p for the wind
-                let info_wind=document.createElement('p');
-                info_wind.classList.add("info__wind");
-                info_wind.textContent=(((elem.wind.speed)*3.6).toFixed(0) + " km/h");
-                div_wind.appendChild(info_wind);
+                createP("info__wind",(((elem.wind.speed)*3.6).toFixed(0)+" km/h"),div_wind)
+
+                // //create a img for the wind image
+                // let wind=document.createElement('img');
+                // wind.classList.add("wind");
+                // wind.setAttribute("src","./assets/wind.png");
+                // div_wind.appendChild(wind);
+
+                // //create a p for the wind
+                // let info_wind=document.createElement('p');
+                // info_wind.classList.add("info__wind");
+                // info_wind.textContent=(((elem.wind.speed)*3.6).toFixed(0) + " km/h");
+                // div_wind.appendChild(info_wind);
 
                 
             }
