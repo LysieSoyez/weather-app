@@ -5,7 +5,7 @@ This is a weather app. On the second branch you'll find a refactor version of th
 
 ## Screenshots
 
-![App Screenshot](./assets/meteou.png)
+<img src="./assets/meteou.png" alt="drawing" width="200"/>
 
 
 ## 🔗 Links
